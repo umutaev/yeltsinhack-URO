@@ -12,7 +12,8 @@ class CampType(DjangoObjectType):
     picture_url = graphene.String()
 
     def resolve_picture_url(self, info):
-        return self.picture.url
+        if self.picture:
+            return self.picture.url
 
 
 class Query(graphene.ObjectType):
